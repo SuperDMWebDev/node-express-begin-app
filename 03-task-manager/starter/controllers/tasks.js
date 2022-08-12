@@ -19,12 +19,8 @@ const getTask = asyncWrapper(async (req, res) => {
   res.status(201).json({ task });
 });
 const createTask = asyncWrapper(async (req, res) => {
-  try {
-    const task = await Task.create(req.body);
-    res.status(201).json({ task });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  const task = await Task.create(req.body);
+  res.status(201).json({ task });
 });
 const updateTask = asyncWrapper(async (req, res) => {
   const { id: taskId } = req.params;
